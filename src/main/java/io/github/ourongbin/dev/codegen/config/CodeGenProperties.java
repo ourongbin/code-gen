@@ -11,8 +11,8 @@ import java.util.List;
 public class CodeGenProperties {
 
     private String baseUrl = "/api/v1";
+    private String sqlPath = "input.sql";
     private String packageName = "com.tencent.sr";
-    private String sqlPath = "/Users/ronou/input.sql";
     private String outputPath = "/Users/ronou/output";
     private String fullReturnUtil = "com.tencent.sr.rmall.common.primitive.HttpResult";
     private String fullPageRequest = "com.tencent.sr.rmall.common.request.PaginationRequest";

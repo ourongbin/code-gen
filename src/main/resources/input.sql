@@ -1,6 +1,6 @@
 # 注意
 # 表注释写法：  comment ='图片模板';
-create table image_template
+create table t_image_template
 (
     `id`            bigint unsigned not null auto_increment comment 'id',
     `template_name` varchar(200)    not null default '' comment '模板名称',

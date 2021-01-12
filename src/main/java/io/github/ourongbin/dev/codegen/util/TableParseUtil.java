@@ -5,7 +5,7 @@ import io.github.ourongbin.dev.codegen.ClassInfo;
 import io.github.ourongbin.dev.codegen.config.ParamInfo;
 import io.github.ourongbin.dev.codegen.util.CodeGenException;
 import io.github.ourongbin.dev.codegen.util.MyStringUtils;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -23,13 +23,14 @@ public class TableParseUtil {
         //process the param
         String nameCaseType = paramInfo.getNameCaseType();
 
-        if (tableSql == null || tableSql.trim().length() == 0) {
+        if (StringUtils.isBlank(tableSql)) {
             throw new CodeGenException("Table structure can not be empty. 表结构不能为空。");
         }
+        tableSql = tableSql.trim();
         //deal with special character
-        tableSql = tableSql.trim().replaceAll("'", "`").replaceAll("\"", "`").replaceAll("，", ",").toLowerCase();
+        tableSql = tableSql.replaceAll("'", "`").replaceAll("\"", "`").replaceAll("，", ",").toLowerCase();
         //deal with java string copy \n"
-        tableSql = tableSql.trim().replaceAll("\\\\n`", "").replaceAll("\\+", "").replaceAll("``", "`").replaceAll("\\\\", "");
+        tableSql = tableSql.replaceAll("\\\\n`", "").replaceAll("\\+", "").replaceAll("``", "`").replaceAll("\\\\", "");
         // table Name
         String tableName = null;
         if (tableSql.contains("TABLE") && tableSql.contains("(")) {
@@ -48,7 +49,7 @@ public class TableParseUtil {
         if (tableName.contains("`")) {
             tableName = tableName.substring(tableName.indexOf("`") + 1, tableName.lastIndexOf("`"));
         } else {
-            //空格开头的，需要替换掉\n\t空格
+            //需要替换掉\n\t空格
             tableName = tableName.replaceAll(" ", "").replaceAll("\n", "").replaceAll("\t", "");
         }
         //优化对byeas`.`ct_bd_customerdiscount这种命名的支持
@@ -281,6 +282,9 @@ public class TableParseUtil {
             throw new CodeGenException("表结构分析失败，请检查语句或者提交issue给我");
         }
 
+        if (tableName.startsWith("t_")) {
+            className = className.substring(1);
+        }
         ClassInfo codeJavaInfo = new ClassInfo();
         codeJavaInfo.setTableName(tableName);
         codeJavaInfo.setClassName(className);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 
 @FeignClient("spring-application-name")
-interface ${CapClassName}Client {
+public interface ${CapClassName}Client {
 
     @PostMapping("${baseUrl}/${className}/save")
     @ApiOperation("保存，id为null时创建")

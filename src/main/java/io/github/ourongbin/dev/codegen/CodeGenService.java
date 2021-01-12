@@ -21,7 +21,7 @@ public class CodeGenService {
     private final CodeGenProperties codeGenProperties;
 
     public String getTableSql() throws IOException {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("input.sql");
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(codeGenProperties.getSqlPath());
         try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)))) {
             return br.lines().collect(Collectors.joining(System.lineSeparator()));
         }
