@@ -32,6 +32,7 @@ public class ${CapClassName}Service {
             return null;
         }
 
+        // todo
         ${CapClassName}DTO result = new ${CapClassName}DTO();
 
         return result;
@@ -42,6 +43,7 @@ public class ${CapClassName}Service {
             return null;
         }
 
+        // todo
         ${CapClassName}DO result = new ${CapClassName}DO();
 
         return result;
