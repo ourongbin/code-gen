@@ -34,6 +34,9 @@ public class ${CapClassName}Service {
 
         // todo
         ${CapClassName}DTO result = new ${CapClassName}DTO();
+<#list classInfo.fieldList as fieldItem >
+        result.set${fieldItem.fieldName?cap_first}(copy.get${fieldItem.fieldName?cap_first}());
+</#list>
 
         return result;
     }
@@ -45,6 +48,9 @@ public class ${CapClassName}Service {
 
         // todo
         ${CapClassName}DO result = new ${CapClassName}DO();
+    <#list classInfo.fieldList as fieldItem >
+        result.set${fieldItem.fieldName?cap_first}(copy.get${fieldItem.fieldName?cap_first}());
+    </#list>
 
         return result;
     }
