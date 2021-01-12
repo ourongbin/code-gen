@@ -1,0 +1,19 @@
+code-gen:
+  templates:
+    - name: SaveRequest
+    - name: DelRequest
+    - name: QueryCriteria
+    - name: DetailRequest
+    - name: DTO
+    - name: Client
+    - name: Mapper
+    - name: MyBatis
+      type: xml
+    - name: Service
+    - name: Controller
+    - name: DO
+  sql-path: /Users/ronou/input.sql
+  base-url: /api/v1/lining/goods-core
+  package-name: com.tencent.sr.lining.goods.core.repository.output
+  output-path: /Users/ronou/biz-mid-goods/goods-core/dal/src/main/java/com/tencent/sr/lining/goods/core/repository/output
+
