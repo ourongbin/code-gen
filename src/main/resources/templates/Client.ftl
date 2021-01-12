@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 
-@FeignClient("spring-application-name")
+@FeignClient(name = "spring-application-name", contextId = "${CapClassName}Client")
 public interface ${CapClassName}Client {
 
     @PostMapping("${baseUrl}/${className}/save")
