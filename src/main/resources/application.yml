@@ -11,6 +11,7 @@ code-gen:
       type: xml
     - name: Service
     - name: Controller
+    - name: Dependency
     - name: DO
   sql-path: input.sql
   base-url: /api/v1/lining/goods-core

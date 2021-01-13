@@ -76,9 +76,11 @@ public class Application implements CommandLineRunner {
         params.put("returnUtil", codeGenProperties.getFullReturnUtil().substring(codeGenProperties.getFullReturnUtil().lastIndexOf(".") + 1));
         params.put("pageRequest", codeGenProperties.getFullPageRequest().substring(codeGenProperties.getFullPageRequest().lastIndexOf(".") + 1));
         params.put("pageResponse", codeGenProperties.getFullPageResponse().substring(codeGenProperties.getFullPageResponse().lastIndexOf(".") + 1));
+        params.put("bizException", codeGenProperties.getFullBizException().substring(codeGenProperties.getFullBizException().lastIndexOf(".") + 1));
         params.put("fullReturnUtil", codeGenProperties.getFullReturnUtil());
         params.put("fullPageRequest", codeGenProperties.getFullPageRequest());
         params.put("fullPageResponse", codeGenProperties.getFullPageResponse());
+        params.put("fullBizException", codeGenProperties.getFullBizException());
         params.put("swagger", paramInfo.isSwagger());
 
         //3.generate the code by freemarker template and param . Freemarker根据参数和模板生成代码

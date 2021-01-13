@@ -17,6 +17,7 @@ public class CodeGenProperties {
     private String fullReturnUtil = "com.tencent.sr.rmall.common.primitive.HttpResult";
     private String fullPageRequest = "com.tencent.sr.rmall.common.request.PaginationRequest";
     private String fullPageResponse = "com.tencent.sr.rmall.common.response.PaginationResponse";
+    private String fullBizException = "com.tencent.sr.rmall.common.exception.retail.TRetailBizException";
     private ParamInfo paramInfo = new ParamInfo();
     private List<TemplateInfo> templates = Collections.emptyList();
 
