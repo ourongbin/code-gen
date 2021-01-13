@@ -14,7 +14,10 @@ code-gen:
     - name: Dependency
     - name: DO
   sql-path: input.sql
+  # controller/feignClient 的基础 url
   base-url: /api/v1/lining/goods-core
+  # 生成的类的package
   package-name: com.tencent.sr.lining.goods.core.repository.output
+  # 生成的文件的输出位置
   output-path: /Users/ronou/biz-mid-goods/goods-core/dal/src/main/java/com/tencent/sr/lining/goods/core/repository/output
 
