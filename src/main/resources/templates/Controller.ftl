@@ -34,7 +34,7 @@ public class ${CapClassName}Controller implements ${CapClassName}Client {
     }
 
     @ApiOperation("分页查询")
-    @PostMapping("${baseUrl}/${className}/query")
+    @PostMapping("${baseUrl}/${className}/pageQuery")
     @Override
     public ${returnUtil}<${pageResponse}<${CapClassName}DTO>> pageQuery(@RequestBody @Valid ${pageRequest}<${CapClassName}QueryCriteria> req) {
         return ${returnUtil}.succ(service.pageQuery(req));

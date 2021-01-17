@@ -5,6 +5,7 @@ code-gen:
     - name: QueryCriteria
     - name: DetailRequest
     - name: DTO
+    - name: VO
     - name: Client
     - name: Mapper
     - name: MyBatis
