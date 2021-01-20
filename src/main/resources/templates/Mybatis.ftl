@@ -55,25 +55,27 @@
         </#if>
     </#list>
         </set>
-        WHERE id = ${r"#{"}id${r"}"}
+        WHERE id = ${r"#{"}id${r"}"} AND is_deleted = 0
     </update>
 
 
     <select id="selectById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM ${tableName}
-        WHERE id = ${r"#{id}"}
+        WHERE id = ${r"#{id}"} AND is_deleted = 0
     </select>
 
     <select id="pageList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM ${tableName}
+        WHERE is_deleted = 0
         LIMIT ${r"#{offset}"}, ${r"#{limit}"}
     </select>
 
     <select id="pageListCount" resultType="java.lang.Integer">
         SELECT count(*)
         FROM ${tableName}
+        WHERE is_deleted = 0
     </select>
 
 </mapper>
