@@ -13,7 +13,7 @@ public interface ${CapClassName}Mapper {
 
     int deleteByIdList(@Param("idList") List<Long> idList);
 
-    int updateById(${CapClassName}DO ${CapClassName});
+    int updateById(${CapClassName}DO ${className});
 
     ${CapClassName}DO selectById(long id);
 
