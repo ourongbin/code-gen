@@ -90,13 +90,20 @@ class Solution {
 //        return result;
 //    }
     public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        while (root.left != null) {
-            stack.push(root);
-            root = root.left;
+        while (root != null || !stack.isEmpty()) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                TreeNode tmp = stack.pop();
+                result.add(tmp.val);
+                root = tmp.right;
+            }
         }
 
-
+        return result;
     }
 
 }
