@@ -64,7 +64,11 @@ class BinaryTreePreorderTraversal {
     public static void main(String[] args) {
         BinaryTreePreorderTraversal question = new BinaryTreePreorderTraversal();
         Solution solution = question.new Solution();
-        System.out.println(args);
+        System.out.println(solution.binarySearch(new int[] {}, 2));
+        System.out.println(solution.binarySearch(new int[] {1}, 2));
+        System.out.println(solution.binarySearch(new int[] {2}, 2));
+        System.out.println(solution.binarySearch(new int[] {1, 3}, 2));
+        System.out.println(solution.binarySearch(new int[] {1, 2}, 2));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -85,18 +89,22 @@ class BinaryTreePreorderTraversal {
      * }
      */
     class Solution {
-        public List<Integer> preorderTraversal(TreeNode root) {
-            List<Integer> res = new ArrayList<>();
-            Stack<TreeNode> s = new Stack<>();
-            while (root != null || !s.isEmpty()) {
-                if (root != null) {
-                    res.add(root.val);
-                    if (root.right != null) {
-                        s.push(root.right);
-                    }
-                    root = root.left;;
+        public int binarySearch(int[] nums, int target) {
+            int res = -1;
+            if (nums == null || nums.length ==0) {
+                return res;
+            }
+
+            int low = 0;
+            int high = nums.length - 1;
+            while (low <= high) {
+                int mid = (low + high) / 2;
+                if (nums[mid] == target) {
+                    return mid;
+                } else if (nums[mid] < target) {
+                    low = mid + 1;
                 } else {
-                    root = s.pop();
+                    high = mid - 1;
                 }
             }
 
