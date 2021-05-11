@@ -58,17 +58,21 @@ class TwoSum {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < nums.length; ++i) {
-                if (map.containsKey(target - nums[i])) {
-                    return new int[]{map.get(target - nums[i]), i};
+            if (nums == null || nums.length == 0) {
+                return new int[0];
+            }
+            Map<Integer, Integer> num2index = new HashMap<>();
+            for (int i = 0, numsLength = nums.length; i < numsLength; i++) {
+                int num = nums[i];
+                if (num2index.containsKey(target - num)) {
+                    return new int[]{i, num2index.get(target - num)};
                 } else {
-                    map.put(nums[i], i);
+                    num2index.put(num, i);
                 }
             }
-            return null;
+
+            return new int[0];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
-
 }

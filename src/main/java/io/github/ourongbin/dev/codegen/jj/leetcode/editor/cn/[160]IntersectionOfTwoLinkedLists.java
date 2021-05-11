@@ -61,6 +61,9 @@ package io.github.ourongbin.dev.codegen.jj.leetcode.editor.cn;
 // Related Topics 链表 
 // 👍 1098 👎 0
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ListNode {
     int val;
     ListNode next;
@@ -68,6 +71,28 @@ class ListNode {
     ListNode(int x) {
         val = x;
         next = null;
+    }
+
+    public static ListNode make(int ... nums) {
+        ListNode preHead = new ListNode(-1);
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int num = nums[i];
+            ListNode listNode = new ListNode(num);
+            listNode.next = preHead.next;
+            preHead.next = listNode;
+        }
+
+        return preHead.next;
+    }
+
+    public static void print(ListNode l) {
+        List<Integer> nums = new ArrayList<>();
+        while (l != null) {
+            nums.add(l.val);
+            l = l.next;
+        }
+
+        System.out.println(nums);
     }
 }
 

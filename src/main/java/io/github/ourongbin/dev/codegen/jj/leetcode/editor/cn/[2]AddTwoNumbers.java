@@ -47,8 +47,12 @@ package io.github.ourongbin.dev.codegen.jj.leetcode.editor.cn;
 class AddTwoNumbers {
     public static void main(String[] args) {
         AddTwoNumbers question = new AddTwoNumbers();
+        ListNode l1 = ListNode.make(2, 4, 3);
+        ListNode l2 = ListNode.make(5, 6, 4);
+        ListNode.print(l1);
+        ListNode.print(l2);
         Solution solution = question.new Solution();
-        System.out.println(args);
+        System.out.println(solution.addTwoNumbers(l1, l2));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -67,50 +71,22 @@ class AddTwoNumbers {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             ListNode preHead = new ListNode(-1);
             ListNode tail = preHead;
-
             int carry = 0;
-            while (l1 != null && l2 != null) {
-                int i = l1.val + l2.val + carry;
-                if (i >= 10) {
-                    i -= 10;
-                    carry = 1;
-                } else {
-                    carry = 0;
-                }
-                tail.next = new ListNode(i);
+            while (l1 != null || l2 != null || carry > 0) {
+                int a = l1 != null ? l1.val : 0;
+                int b = l2 != null ? l2.val : 0;
+                int sum = a + b + carry;
+                carry = sum / 10;
+                sum = sum % 10;
+                tail.next = new ListNode(sum);
                 tail = tail.next;
-                l1 = l1.next;
-                l2 = l2.next;
-            }
-            while (l1 != null) {
-                int i = l1.val + carry;
-                if (i >= 10) {
-                    i -= 10;
-                    carry = 1;
-                } else {
-                    carry = 0;
+                if (l1 != null) {
+                    l1 = l1.next;
                 }
-                tail.next = new ListNode(i);
-                tail = tail.next;
-                l1 = l1.next;
-            }
-            while (l2 != null) {
-                int i = l2.val + carry;
-                if (i >= 10) {
-                    i -= 10;
-                    carry = 1;
-                } else {
-                    carry = 0;
+                if (l2 != null) {
+                    l2 = l2.next;
                 }
-                tail.next = new ListNode(i);
-                tail = tail.next;
-                l2 = l2.next;
             }
-
-            if (carry > 0) {
-                tail.next = new ListNode(carry);
-            }
-
             return preHead.next;
         }
     }
