@@ -56,28 +56,28 @@ class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         LongestSubstringWithoutRepeatingCharacters question = new LongestSubstringWithoutRepeatingCharacters();
         Solution solution = question.new Solution();
-        System.out.println(args);
+        System.out.println(solution.lengthOfLongestSubstring("adeagfh"));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
         public int lengthOfLongestSubstring(String s) {
+            int res = 0;
             if (s == null || s.length() == 0) {
-                return 0;
+                return res;
             }
-            int res = 1;
+
             Set<Character> occ = new HashSet<>();
-            for (int l = 0, r = 0; l < s.length(); ++l) {
-                for (; r < s.length(); ++r) {
-                    if (!occ.contains(s.charAt(r))) {
-                        occ.add(s.charAt(r));
-                    } else {
-                        break;
-                    }
+            for (int i = 0, j = 0; j < s.length(); ) {
+                if (!occ.contains(s.charAt(j))) {
+                    occ.add(s.charAt(j));
+                    res = Math.max(res, occ.size());
+                    j++;
+                } else {
+                    occ.remove(s.charAt(i));
+                    i++;
                 }
-                res = Math.max(res, r - l);
-                occ.remove(s.charAt(l));
             }
 
             return res;
