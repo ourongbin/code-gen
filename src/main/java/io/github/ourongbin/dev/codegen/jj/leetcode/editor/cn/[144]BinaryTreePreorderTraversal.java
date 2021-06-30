@@ -53,64 +53,40 @@ package io.github.ourongbin.dev.codegen.jj.leetcode.editor.cn;
 //
 // 进阶：递归算法很简单，你可以通过迭代算法完成吗？ 
 // Related Topics 栈 树 
-// 👍 553 👎 0
+// 👍 566 👎 0
 
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 class BinaryTreePreorderTraversal {
     public static void main(String[] args) {
         BinaryTreePreorderTraversal question = new BinaryTreePreorderTraversal();
         Solution solution = question.new Solution();
-        System.out.println(solution.binarySearch(new int[] {}, 2));
-        System.out.println(solution.binarySearch(new int[] {1}, 2));
-        System.out.println(solution.binarySearch(new int[] {2}, 2));
-        System.out.println(solution.binarySearch(new int[] {1, 3}, 2));
-        System.out.println(solution.binarySearch(new int[] {1, 2}, 2));
+        System.out.println(args);
     }
-
+    
     //leetcode submit region begin(Prohibit modification and deletion)
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
 
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     * int val;
-     * TreeNode left;
-     * TreeNode right;
-     * TreeNode() {}
-     * TreeNode(int val) { this.val = val; }
-     * TreeNode(int val, TreeNode left, TreeNode right) {
-     * this.val = val;
-     * this.left = left;
-     * this.right = right;
-     * }
-     * }
-     */
-    class Solution {
-        public int binarySearch(int[] nums, int target) {
-            int res = -1;
-            if (nums == null || nums.length ==0) {
-                return res;
-            }
-
-            int low = 0;
-            int high = nums.length - 1;
-            while (low <= high) {
-                int mid = (low + high) / 2;
-                if (nums[mid] == target) {
-                    return mid;
-                } else if (nums[mid] < target) {
-                    low = mid + 1;
-                } else {
-                    high = mid - 1;
-                }
-            }
-
-            return res;
-        }
     }
+}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
